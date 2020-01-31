@@ -1,12 +1,15 @@
- <!-- 
-    Description of project
--->
+
  
  <html>
     <head>
-      <title>Hello, WebVR! - A-Frame</title>
-      <meta name="description" content="Hello, WebVR! - A-Frame">
-      
+      <title>Testing 2D Storage Space - A-Frame</title>
+      <meta name="description" content="Testing 2D Storage Space - A-Frame">
+ <!-- THIS IS CALLING ALL OF OUR SOURCES-->
+
+      <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/point_save.js"></script>
+
     </head>
     <body>
       <a-scene>
@@ -14,17 +17,51 @@
 
         </a-assets>
 
-        <!-- camera group -->
-        <a-entity position="0 5 12" rotation="-15 0 0">
-          <a-entity camera look-controls>                                           
-              <a-entity   cursor="rayOrigin:mouse; fuse:false;"
-                          raycaster="far:20; inteval:100; objects:.clickable;">
-              </a-entity>
-          </a-entity>
-        </a-entity>
+        <a-sky material ="color:gray"></a-sky>
 
+        <!-- camera group -->
+        <a-entity position="0 0 0" rotation="0 0 0">
+              </a-entity>
+         <!-- X  Y  Z -->
+            <a-entity id="plane"
+              position="0 2 -5"
+              rotation="0 0 0" 
+              scale="1 1 1"
+              geometry="primitive:plane; width:5.0; height:5.0;" 
+              material="color:darkorange;"></a-entity>
         
 
+              <!-- X COORDINATES -->
+              <a-entity id="pointX"
+              position="-2 4 -5"
+              scale="1 1 1"
+              geometry="primitive:sphere; radius:0.2;"
+              material="color:blue"></a-entity> 
+        
+              <a-entity id="pointX2"
+              position="-1 4 -5"
+              scale="1 1 1"
+              geometry="primitive:sphere; radius:0.2;"
+              material="color:blue"></a-entity> 
+
+              <a-entity id="pointX3"
+              position="0 4 -5"
+              scale="1 1 1"
+              geometry="primitive:sphere; radius:0.2;"
+              material="color:blue"></a-entity> 
+              
+              <!-- Y COORDINATES -->
+              <a-entity id="pointY"
+              position="-2 3 -5"
+              scale="1 1 1"
+              geometry="primitive:sphere; radius:0.2;"
+              material="color:blue"></a-entity> 
+        
+              <a-entity id="pointY2"
+              position="-2 2 -5"
+              scale="1 1 1"
+              geometry="primitive:sphere; radius:0.2;"
+              material="color:blue"></a-entity> 
 
       </a-scene>
     </body>
