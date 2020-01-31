@@ -1,0 +1,22 @@
+{
+  "name": "lesson-2-aframe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TApaquette/Lesson-2-Aframe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TApaquette/Lesson-2-Aframe/issues"
+  },
+  "homepage": "https://github.com/TApaquette/Lesson-2-Aframe#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
