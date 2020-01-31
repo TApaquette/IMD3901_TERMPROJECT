@@ -3,29 +3,23 @@
 -->
  
  <html>
-    <head>
-      <title>Hello, WebVR! - A-Frame</title>
-      <meta name="description" content="Hello, WebVR! - A-Frame">
-      
-    </head>
+  <head>
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+  </head>
     <body>
-      <a-scene>
-        <a-assets>
-
-        </a-assets>
-
-        <!-- camera group -->
-        <a-entity position="0 5 12" rotation="-15 0 0">
-          <a-entity camera look-controls>                                           
-              <a-entity   cursor="rayOrigin:mouse; fuse:false;"
-                          raycaster="far:20; inteval:100; objects:.clickable;">
-              </a-entity>
+      <a-scene physics>
+        <a-entity id="rig" position="0 2 2">
+          <a-entity id="camera" camera look-controls></a-entity>
+          <a-entity cursor="rayOrigin:mouse;"
+                    raycaster="far:20; interval:100; objects:.clickable;">
           </a-entity>
         </a-entity>
 
-        
-
-
+        <a-box position="-1 10 -3" rotation="0 45 0" color="#4CC3D9" dynamic-body></a-box>
+        <a-plane physics="friction: 0.1; restitution: 0.1" position="0 2 -4" rotation="-90 0 0" width="4" height="4" color="#4CC3D9" static-body></a-plane>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
       </a-scene>
     </body>
 </html>
