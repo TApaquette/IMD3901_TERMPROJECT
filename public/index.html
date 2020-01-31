@@ -6,7 +6,8 @@
     <head>
       <title>Hello, WebVR! - A-Frame</title>
       <meta name="description" content="Hello, WebVR! - A-Frame">
-      
+      <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+      <script src="js/new-geo.js"></script>
     </head>
     <body>
       <a-scene>
@@ -15,15 +16,19 @@
         </a-assets>
 
         <!-- camera group -->
-        <a-entity position="0 5 12" rotation="-15 0 0">
-          <a-entity camera look-controls>                                           
+        <a-entity id="camera-entity" position="0 5 12" rotation="-15 0 0">
+          <a-entity camera look-controls wasd-controls>                                           
               <a-entity   cursor="rayOrigin:mouse; fuse:false;"
                           raycaster="far:20; inteval:100; objects:.clickable;">
               </a-entity>
           </a-entity>
         </a-entity>
 
-        
+
+
+        <a-entity id="shape"
+                new-geo=""
+                geometry="primitive: example"></a-entity>
 
 
       </a-scene>
