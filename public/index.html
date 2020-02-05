@@ -6,9 +6,11 @@
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+    <script src="js/interacting.js"></script>
+
   </head>
     <body>
-      <a-scene physics>
+      <a-scene id= "scen" physics="friction: 0.1">
         <a-entity id="rig" position="0 2 2">
           <a-entity id="camera" camera look-controls></a-entity>
           <a-entity cursor="rayOrigin:mouse;"
@@ -16,8 +18,18 @@
           </a-entity>
         </a-entity>
 
-        <a-box position="-1 10 -3" rotation="0 45 0" color="#4CC3D9" dynamic-body></a-box>
-        <a-plane physics="friction: 0.1; restitution: 0.1" position="0 2 -4" rotation="-90 0 0" width="4" height="4" color="#4CC3D9" static-body></a-plane>
+        <a-entity id="box"
+          geometry="primitive: box; depth: 0.5; height: 0.5; width: 0.5"
+                    material="color: #4CC3D9; shader: standard"
+                    position="-1 5 -3"
+                    rotation="0 45 0"
+                    dynamic-body= "mass: 1"
+                    interacting="">
+        </a-entity>
+        
+        
+
+        <a-plane id="bouncy" position="0 1 -4" rotation="-90 0 0" width="4" height="4" color="#4CC3D9" static-body></a-plane>
         <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
         <a-sky color="#ECECEC"></a-sky>
       </a-scene>
