@@ -1,58 +1,59 @@
-var arrayZero = [0, 0, 0];
-var arrayOne = [1, 0, 0];
-var arrayTwo = [2, 0, 0];
-var arrayThree = [3, 0, 0];
+AFRAME.registerGeometry('new-geo', {
 
-var arrayFour = [arrayZero[0], arrayZero[1], arrayZero[2] - 1];
-var arrayFive = [arrayOne[0], arrayOne[1], arrayOne[2] - 1];
-var arraySix = [arrayTwo[0], arrayTwo[1], arrayTwo[2] - 1];
-var arraySeven = [arrayThree[0], arrayThree[1], arrayThree[2] - 1];
-
-var arrayEight = [arrayZero[0], arrayZero[1] - 1, arrayZero[2]];
-var arrayNine = [arrayOne[0], arrayOne[1] - 1, arrayOne[2]];
-var arrayTen = [arrayTwo[0], arrayTwo[1] - 1, arrayTwo[2]];
-var arrayEleven = [arrayThree[0], arrayThree[1] - 1, arrayThree[2]];
-
-var arrayTwelve = [arrayZero[0], arrayZero[1] - 1, arrayZero[2] - 1];
-var arrayThirteen = [arrayOne[0], arrayOne[1] - 1, arrayOne[2] - 1];
-var arrayFourteen = [arrayTwo[0], arrayTwo[1] - 1, arrayTwo[2] - 1];
-var arrayFifteen = [arrayThree[0], arrayThree[1] - 1, arrayThree[2] - 1];
-
-
-var vertexZero = arrayZero.join(' ');
-var vertexOne = arrayOne.join(' ');
-var vertexTwo = arrayTwo.join(' ');
-var vertexThree = arrayThree.join(' ');
-
-var vertexFour = arrayFour.join(' ');
-var vertexFive = arrayFive.join(' ');
-var vertexSix = arraySix.join(' ');
-var vertexSeven = arraySeven.join(' ');
-
-var vertexEight = arrayEight.join(' ');
-var vertexNine = arrayNine.join(' ');
-var vertexTen = arrayTen.join(' ');
-var vertexEleven = arrayEleven.join(' ');
-
-var vertexTwelve = arrayTwelve.join(' ');
-var vertexThirteen = arrayThirteen.join(' ');
-var vertexFourteen = arrayFourteen.join(' ');
-var vertexFifteen = arrayFifteen.join(' ');
-
-
-AFRAME.registerGeometry('example', {
     schema: {
       vertices: {
-        default: [vertexZero, vertexOne, vertexTwo, vertexThree, vertexFour, vertexFive, vertexSix, vertexSeven, vertexEight, vertexNine, vertexTen, vertexEleven, vertexTwelve, vertexThirteen, vertexFourteen, vertexFifteen],
-      },
+        default: ['0 0 0', '1 0 0', '2 0 0', '3 0 0'],
+      }
     },
-  
+
     init: function (data) {
+
+      //geometry.vertices = data.vertices.map(function (vertex) {
+          // var points = vertex.split(' ').map(function(x){return parseInt(x);});
+          // return new THREE.Vector3(points[0], points[1], points[2]);
+      // });
+      
+
+      // var arrayZero = [0, 0, 0];
+      // var arrayOne = [1, 0, 0];
+      // var arrayTwo = [2, 0, 0];
+      // var arrayThree = [3, 0, 0];
+
+      var arrayZero = data.vertices[0].split(" ");
+      var arrayOne = data.vertices[1].split(" ");
+      var arrayTwo = data.vertices[2].split(" ");
+      var arrayThree = data.vertices[3].split(" ");
+
+      this.createGeo(arrayZero, arrayOne, arrayTwo, arrayThree);
+    },
+
+
+    createGeo : function ( point1, point2, point3, point4 ) {
+
       var geometry = new THREE.Geometry();
-      geometry.vertices = data.vertices.map(function (vertex) {
-          var points = vertex.split(' ').map(function(x){return parseInt(x);});
-          return new THREE.Vector3(points[0], points[1], points[2]);
-      });
+
+      geometry.vertices.push(new THREE.Vector3(point1[0], point1[1], point1[2]));
+      geometry.vertices.push(new THREE.Vector3(point2[0], point2[1], point2[2]));
+      geometry.vertices.push(new THREE.Vector3(point3[0], point3[1], point3[2]));
+      geometry.vertices.push(new THREE.Vector3(point4[0], point4[1], point4[2]));
+
+      geometry.vertices.push(new THREE.Vector3(point1[0], point1[1], point1[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point2[0], point2[1], point2[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point3[0], point3[1], point3[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point4[0], point4[1], point4[2] - 1));
+
+      geometry.vertices.push(new THREE.Vector3(point1[0], point1[1] - 1, point1[2]));
+      geometry.vertices.push(new THREE.Vector3(point2[0], point2[1] - 1, point2[2]));
+      geometry.vertices.push(new THREE.Vector3(point3[0], point3[1] - 1, point3[2]));
+      geometry.vertices.push(new THREE.Vector3(point4[0], point4[1] - 1, point4[2]));
+
+      geometry.vertices.push(new THREE.Vector3(point1[0], point1[1] - 1, point1[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point2[0], point2[1] - 1, point2[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point3[0], point3[1] - 1, point3[2] - 1));
+      geometry.vertices.push(new THREE.Vector3(point4[0], point4[1] - 1, point4[2] - 1));
+      
+
+
       geometry.computeBoundingBox();
       geometry.faces.push(new THREE.Face3(0, 8, 9));
       geometry.faces.push(new THREE.Face3(0, 9, 1));
