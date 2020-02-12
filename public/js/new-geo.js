@@ -39,6 +39,7 @@ var vertexThirteen = arrayThirteen.join(' ');
 var vertexFourteen = arrayFourteen.join(' ');
 var vertexFifteen = arrayFifteen.join(' ');
 
+
 AFRAME.registerGeometry('example', {
     schema: {
       vertices: {
