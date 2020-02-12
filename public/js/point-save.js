@@ -4,25 +4,32 @@ AFRAME.registerComponent( 'point-save',{
         console.log('init component');
 
         const Context_AF = this;
+       
         
     
         Context_AF.el.addEventListener('click', function(event) {
             const coordinate = document.querySelector('.inactive');
             
-            console.log('click');
-           
+         
             if(Context_AF.el.getAttribute('class')=== 'clickable inactive'){
+
                 Context_AF.el.setAttribute('material', 'color:red');
                 Context_AF.el.setAttribute('class', "clickable active");
                 console.log('active');
 
+              
 
             }
             else if (Context_AF.el.getAttribute('class')=== 'clickable active'){
                 Context_AF.el.setAttribute('material', 'color:blue');
                 Context_AF.el.setAttribute('class', "clickable inactive");
-                console.log('inactive')
+                console.log('inactive');
+
+               
+
             }
+
+            
 
 
 
@@ -46,18 +53,8 @@ AFRAME.registerComponent( 'point-save',{
         });
 
     },        
-spawnPoints: function(){
-    const Context_AF = this;
-
-    let Point_Elem = document.createElement('a-entity');
-        Point_Elem.setAttribute('id', "point");
-        Point_Elem.setAttribute('class', 'clickable active inactive');
-        Point_Elem.setAttribute('geometry', 'primitive:sphere: radius:0.2');
-        
-        let scene = document.querySelector('a-scene');
-        scene.appendChild(Point_Elem);
 
 
 
-}})
+})
 //this.el.getAttribute("position")//

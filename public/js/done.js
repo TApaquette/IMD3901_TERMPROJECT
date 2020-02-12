@@ -1,3 +1,6 @@
+var drawPoints = [];
+
+
 AFRAME.registerComponent( 'done',{
     init : function()
     {
@@ -11,13 +14,22 @@ AFRAME.registerComponent( 'done',{
             
             console.log('click');
            
-            selected = document.querySelectorAll(".active")
-            Context_AF.el.getAttribute("position")
+            let selected = document.querySelectorAll(".active")
+                console.log(selected.length);
+            
+            for(i = 0; i < 4; i++){
+                let pointfound = selected[i].getAttribute('position')
+                
+            }
+            drawPoints[0] = selected[0].getAttribute('position');
+            drawPoints[1] = selected[1].getAttribute('position');
+            drawPoints[2] = selected[2].getAttribute('position');
+            drawPoints[3] = selected[3].getAttribute('position');
 
-            console.log(selected);
-
-           
-
+            console.log(drawPoints[0]);
+            console.log(drawPoints[1]);
+            console.log(drawPoints[2]);
+            console.log(drawPoints[3]);
 
 
       
