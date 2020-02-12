@@ -1,5 +1,6 @@
 <html>
     <head>
+<<<<<<< HEAD
       <title>Testing 2D Storage Space - A-Frame</title>
       <meta name="description" content="Testing 2D Storage Space - A-Frame">
  <!-- THIS IS CALLING ALL OF OUR SOURCES-->
@@ -8,6 +9,12 @@
       <script src="js/done.js"></script>
       <script src="js/point-save.js"></script>
 
+=======
+      <title>Hello, WebVR! - A-Frame</title>
+      <meta name="description" content="Hello, WebVR! - A-Frame">
+      <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+      <script src="js/new-geo.js"></script>
+>>>>>>> origin/shapeGeneration
     </head>
     <body>
       <a-scene>
@@ -18,11 +25,19 @@
         <a-sky material ="color:gray"></a-sky>
 
         <!-- camera group -->
+<<<<<<< HEAD
         <a-entity id="rig" position="0 2 0">
           <a-entity id="camera" look-controls></a-entity>
             <a-entity cursor="rayOrigin:mouse;"
                       raycaster="far:20; interval:100; objects:.clickable;">
             </a-entity>
+=======
+        <a-entity id="camera-entity" position="0 5 12" rotation="-15 0 0">
+          <a-entity camera look-controls wasd-controls>                                           
+              <a-entity   cursor="rayOrigin:mouse; fuse:false;"
+                          raycaster="far:20; interval:100; objects:.clickable;">
+              </a-entity>
+>>>>>>> origin/shapeGeneration
           </a-entity>
         </a-entity>
          <!-- X  Y  Z -->
@@ -120,6 +135,7 @@
               material="color:blue"
               point-save=''></a-entity> 
 
+<<<<<<< HEAD
               
               <a-entity id="pointX3/Y2"
               class="clickable inactive"
@@ -253,6 +269,13 @@
               point-save=''></a-entity> 
 
               <!--DONE BUTTON-->
+=======
+
+        
+        <a-entity id="shape"
+                new-geo=""
+                geometry="primitive: example"></a-entity>
+>>>>>>> origin/shapeGeneration
 
               <a-entity id="donebutton"
               class="clickable finish"
