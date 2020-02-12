@@ -6,32 +6,90 @@
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-    <script src="js/interacting.js"></script>
+
 
   </head>
     <body>
       <a-scene id= "scen" physics="friction: 0.1">
-        <a-entity id="rig" position="0 2 2">
-          <a-entity id="camera" camera look-controls></a-entity>
+        <a-entity id="rig" position="0 2 4">
+          <a-entity id="camera" camera look-controls wasd-controls></a-entity>
           <a-entity cursor="rayOrigin:mouse;"
                     raycaster="far:20; interval:100; objects:.clickable;">
           </a-entity>
         </a-entity>
 
-        <a-entity id="box"
-          geometry="primitive: box; depth: 0.5; height: 0.5; width: 0.5"
+        <a-assets>
+          <img id="skyTexture" src="assets/textures/rocky.jpg">
+          <a-asset-item id="corkboardObj" src="assets/models/CorkBoard.obj"></a-asset-item>
+
+          <a-asset-item id="bucketObj" src="assets/models/Bucket.obj"></a-asset-item>
+
+          <a-asset-item id="tableObj" src="assets/models/Table.obj"></a-asset-item>
+          
+          <a-asset-item id="wallsObj" src="assets/models/Walls.obj"></a-asset-item>
+  
+        </a-assets>
+        <a-sky id="background" src="#skyTexture"></a-sky>
+
+        <a-entity id="ball"
+          geometry="primitive: sphere; radius: 0.5"
                     material="color: #4CC3D9; shader: standard"
-                    position="-1 5 -3"
+                    position="-1 5 -4"
                     rotation="0 45 0"
-                    dynamic-body= "mass: 1"
-                    interacting="">
+                    dynamic-body= "mass: 1">
+        </a-entity>
+
+        <a-entity id="walls"
+                    obj-model="obj: #wallsObj"
+                    material="src:assets/textures/WallsTexture.png;"
+                    position="-1 -7 6"
+                    rotation="0 0 0"
+                    static-body>
         </a-entity>
         
-        
+        <a-entity id="bucket"
+                    obj-model="obj: #bucketObj"
+                    material="color: purple; shader: standard"
+                    position="-1.25 -7 6"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
 
-        <a-plane id="bouncy" position="0 1 -4" rotation="-90 0 0" width="4" height="4" color="#4CC3D9" static-body></a-plane>
+        <a-entity id="corkBoard"
+                    obj-model="obj: #corkboardObj"
+                    material="src:assets/textures/CorkBoardTexture.png;"
+                    position="-1 -7 6"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="table"
+                    obj-model="obj: #tableObj"
+                    material="src:assets/textures/TableTexture.png;"
+                    position="-1 -7 6"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="slide1"
+          geometry="primitive: box; width: 2; height: 10; depth: 0.5"
+                    material="color: red; shader: standard"
+                    position="0 3 -4"
+                    rotation="-75 90 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="slide2"
+          geometry="primitive: box; width: 2; height: 10; depth: 0.5"
+                    material="color: red; shader: standard"
+                    position="5 0 -4"
+                    rotation="-120 90 0"
+                    static-body>
+        </a-entity>
+        
         <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
-        <a-sky color="#ECECEC"></a-sky>
+        <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
+
       </a-scene>
     </body>
 </html>
