@@ -8,17 +8,6 @@ AFRAME.registerGeometry('new-geo', {
 
     init: function (data) {
 
-      //geometry.vertices = data.vertices.map(function (vertex) {
-          // var points = vertex.split(' ').map(function(x){return parseInt(x);});
-          // return new THREE.Vector3(points[0], points[1], points[2]);
-      // });
-      
-
-      // var arrayZero = [0, 0, 0];
-      // var arrayOne = [1, 0, 0];
-      // var arrayTwo = [2, 0, 0];
-      // var arrayThree = [3, 0, 0];
-
       var arrayZero = data.vertices[0].split(" ");
       var arrayOne = data.vertices[1].split(" ");
       var arrayTwo = data.vertices[2].split(" ");
