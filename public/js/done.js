@@ -7,16 +7,15 @@ AFRAME.registerComponent( 'done',{
         
     
         Context_AF.el.addEventListener('click', function(event) {
-            const coordinate = document.querySelector('finish');
+            const coordinate = document.querySelector('clickable finish');
             
             console.log('click');
            
-            if(Context_AF.el.getAttribute('class')=== 'clickable finish'){
-                
-                console.log('done');
+            selected = document.querySelectorAll(".active")
+            Context_AF.el.getAttribute("position")
 
+            console.log(selected);
 
-            }
            
 
 
