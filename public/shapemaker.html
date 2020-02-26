@@ -262,13 +262,23 @@
               material="color:green;"
               done=''></a-entity>
 
-        <a-entity id="shape"
-              new-geo=""
-              position="-4 0 -3"
-
-              ></a-entity>
-        
-
       </a-scene>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        let socket = io();
+
+        //default connect event
+        socket.on('connect', function() {
+                console.log("connected!");
+        });
+
+        document.querySelector('#donebutton').addEventListener('click', function() {
+                socket.emit('doneClicked', document.querySelector('#donebutton').components['done'].verts);
+            });
+
+      
+      </script>
+
     </body>
 </html>

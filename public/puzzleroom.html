@@ -6,7 +6,7 @@
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-
+    <script src="js/done.js"></script>
 
   </head>
     <body>
@@ -91,5 +91,26 @@
         <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 
       </a-scene>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        let socket = io();
+
+        //default connect event
+        socket.on('connect', function() {
+                console.log("connected!");
+        });
+
+        socket.on('generate_shape', function(data) {
+          console.log("shape received");
+
+          let createdShape = document.createElement('a-entity');
+            createdShape.setAttribute('id', 'shape');
+            createdShape.setAttribute('new-geo', '');
+            createdShape.setAttribute('position', '0, 1, -4');
+            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data);   
+        });
+      
+      </script>
     </body>
 </html>
