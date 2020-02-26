@@ -31,12 +31,21 @@
         </a-assets>
         <a-sky id="background" src="#skyTexture"></a-sky>
 
-        <a-entity id="ball"
+        <a-entity id="player_ball"
           geometry="primitive: sphere; radius: 0.5"
                     material="color: #4CC3D9; shader: standard"
                     position="-1 5 -4"
                     rotation="0 45 0"
-                    dynamic-body= "mass: 1">
+                    static-body>
+        </a-entity>
+
+        <a-entity id="done_button"
+          geometry="primitive: box; width: 2; height: 5; depth: 0.5"
+                    material="color: #4CC3D9; shader: standard"
+                    position="-1 5 -4"
+                    rotation="0 45 0"
+                    static-body
+                    go-button="">
         </a-entity>
 
         <a-entity id="walls"
