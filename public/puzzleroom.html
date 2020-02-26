@@ -5,6 +5,8 @@
  <html>
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="js/go-button.js"></script>
+    <script src="js/reset-button.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
 
 
@@ -35,17 +37,28 @@
           geometry="primitive: sphere; radius: 0.5"
                     material="color: #4CC3D9; shader: standard"
                     position="-1 5 -4"
-                    rotation="0 45 0"
+                    rotation="0 0 0"
                     static-body>
         </a-entity>
 
         <a-entity id="done_button"
-          geometry="primitive: box; width: 2; height: 5; depth: 0.5"
-                    material="color: #4CC3D9; shader: standard"
-                    position="-1 5 -4"
-                    rotation="0 45 0"
-                    static-body
+        class="clickable"
+          geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
+                    material="color: green; shader: standard"
+                    position="-3.5 2 -4"
+                    rotation="0 0 0"
+                    
                     go-button="">
+        </a-entity>
+
+        <a-entity id="reset_button"
+        class="clickable"
+          geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
+                    material="color: red; shader: standard"
+                    position="-3.5 0 -4"
+                    rotation="0 0 0"
+                    
+                    reset-button="">
         </a-entity>
 
         <a-entity id="walls"
@@ -82,7 +95,7 @@
 
         <a-entity id="slide1"
           geometry="primitive: box; width: 2; height: 10; depth: 0.5"
-                    material="color: red; shader: standard"
+                    material="color: blue; shader: standard"
                     position="0 3 -4"
                     rotation="-75 90 0"
                     static-body>
@@ -90,13 +103,12 @@
 
         <a-entity id="slide2"
           geometry="primitive: box; width: 2; height: 10; depth: 0.5"
-                    material="color: red; shader: standard"
+                    material="color: blue; shader: standard"
                     position="5 0 -4"
                     rotation="-120 90 0"
                     static-body>
         </a-entity>
         
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
         <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 
       </a-scene>

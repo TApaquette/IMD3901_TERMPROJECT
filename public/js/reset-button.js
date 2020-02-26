@@ -1,4 +1,4 @@
-AFRAME.registerComponent( 'go-button',{
+AFRAME.registerComponent( 'reset-button',{
 
 
     init : function()
@@ -21,16 +21,16 @@ AFRAME.registerComponent( 'go-button',{
         Context_AF.el.addEventListener('click', function(event) {
             console.log("click");
             let ball = document.querySelector("#player_ball");
-            if (ball.hasAttribute('static-body')){
-                ball.removeAttribute('static-body');
-                ball.setAttribute('dynamic-body', 'mass: 1');
-                
-            }
-
-            else if(ball.hasAttribute('dynamic-body')){
+            if (ball.hasAttribute('dynamic-body')){
                 ball.removeAttribute('dynamic-body');
+                ball.setAttribute('position', "-1 5 -4");
                 ball.setAttribute('static-body', '');
             }
+
+            else if(ball.hasAttribute('static-body')){
+                ball.setAttribute('position', "-1 5 -4");
+            }
+                
 
             
         });
