@@ -105,12 +105,22 @@
         socket.on('generate_shape', function(data) {
           console.log("shape received");
 
+          var z = Math.random() * 9 - 2.5;
+
           let createdShape = document.createElement('a-entity');
             createdShape.setAttribute('id', 'shape');
             createdShape.setAttribute('new-geo', '');
+<<<<<<< HEAD
             createdShape.setAttribute('position', '0, 1, 0');
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data); 
             createdShape.setAttribute('material=color:red')
+=======
+            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data);
+            createdShape.setAttribute('position', '8.2 20 3'); 
+            createdShape.setAttribute('rotation', '0 -90 0'); 
+            createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
+             
+>>>>>>> 7fc0a6bb1a5db8940b4505ac897cc9d238a1f9eb
             
             let scene = document.querySelector('a-scene');
             scene.appendChild(createdShape);
