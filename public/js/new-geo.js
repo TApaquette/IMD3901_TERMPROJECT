@@ -8,6 +8,8 @@ AFRAME.registerGeometry('new-geo', {
 
     init: function (data) {
 
+      console.log("look at this", data.vertices);
+
       var arrayZero = data.vertices[0].split(" ");
       var arrayOne = data.vertices[1].split(" ");
       var arrayTwo = data.vertices[2].split(" ");

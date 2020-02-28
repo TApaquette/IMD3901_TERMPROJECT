@@ -7,6 +7,7 @@
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="js/done.js"></script>
+    <script src="js/new-geo.js"></script>
 
   </head>
     <body>
@@ -107,8 +108,11 @@
           let createdShape = document.createElement('a-entity');
             createdShape.setAttribute('id', 'shape');
             createdShape.setAttribute('new-geo', '');
-            createdShape.setAttribute('position', '0, 1, -4');
-            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data);   
+            createdShape.setAttribute('position', '0, 1, 0');
+            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data); 
+            
+            let scene = document.querySelector('a-scene');
+            scene.appendChild(createdShape);
         });
       
       </script>

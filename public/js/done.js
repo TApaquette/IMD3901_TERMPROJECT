@@ -41,13 +41,6 @@ AFRAME.registerComponent( 'done',{
             Context_AF.verts = pointOne + "," + pointTwo + "," + pointThree + "," + pointFour;
       
 
-            let createdShape = document.createElement('a-entity');
-            createdShape.setAttribute('id', 'shape');
-            createdShape.setAttribute('new-geo', '');
-            createdShape.setAttribute('position', '-4, 0, -3');
-            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + Context_AF.vertsverts);
-
-
             let scene = document.querySelector('a-scene');
             scene.appendChild(createdShape);
             });
