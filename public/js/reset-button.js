@@ -23,12 +23,13 @@ AFRAME.registerComponent( 'reset-button',{
             let ball = document.querySelector("#player_ball");
             if (ball.hasAttribute('dynamic-body')){
                 ball.removeAttribute('dynamic-body');
-                ball.setAttribute('position', "-1 5 -4");
+                ball.setAttribute('position', "-7 9 -4");
                 ball.setAttribute('static-body', '');
             }
 
+            
             else if(ball.hasAttribute('static-body')){
-                ball.setAttribute('position', "-1 5 -4");
+                ball.setAttribute('position', "-7 9 -4");
             }
                 
 

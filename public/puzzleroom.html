@@ -6,6 +6,7 @@
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="js/go-button.js"></script>
+    <script src="js/grabbing.js"></script>
     <script src="js/reset-button.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
 
@@ -13,8 +14,11 @@
   </head>
     <body>
       <a-scene id= "scen" physics="friction: 0.1">
-        <a-entity id="rig" position="0 2 4">
-          <a-entity id="camera" camera look-controls wasd-controls></a-entity>
+        <a-entity id="rig" position="0 4 4">
+          <a-entity id="camera" camera look-controls wasd-controls>
+            <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
+            material="color: gray; opacity: 0.5"></a-entity>
+          </a-entity>
           <a-entity cursor="rayOrigin:mouse;"
                     raycaster="far:20; interval:100; objects:.clickable;">
           </a-entity>
@@ -36,7 +40,7 @@
         <a-entity id="player_ball"
           geometry="primitive: sphere; radius: 0.5"
                     material="color: #4CC3D9; shader: standard"
-                    position="-1 5 -4"
+                    position="-7 9 -4"
                     rotation="0 0 0"
                     static-body>
         </a-entity>
@@ -45,7 +49,7 @@
         class="clickable"
           geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
                     material="color: green; shader: standard"
-                    position="-3.5 2 -4"
+                    position="-9.5 9 -4"
                     rotation="0 0 0"
                     
                     go-button="">
@@ -55,7 +59,7 @@
         class="clickable"
           geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
                     material="color: red; shader: standard"
-                    position="-3.5 0 -4"
+                    position="-9.5 7 -4"
                     rotation="0 0 0"
                     
                     reset-button="">
@@ -72,7 +76,7 @@
         <a-entity id="bucket"
                     obj-model="obj: #bucketObj"
                     material="color: purple; shader: standard"
-                    position="-1.25 -7 6"
+                    position="-3.5 -5 6"
                     rotation="0 0 0"
                     static-body>
         </a-entity>
@@ -96,7 +100,7 @@
         <a-entity id="slide1"
           geometry="primitive: box; width: 2; height: 10; depth: 0.5"
                     material="color: blue; shader: standard"
-                    position="0 3 -4"
+                    position="-2.25 6 -4"
                     rotation="-75 90 0"
                     static-body>
         </a-entity>
@@ -104,11 +108,27 @@
         <a-entity id="slide2"
           geometry="primitive: box; width: 2; height: 10; depth: 0.5"
                     material="color: blue; shader: standard"
-                    position="5 0 -4"
+                    position="4 3 -4"
                     rotation="-120 90 0"
                     static-body>
         </a-entity>
         
+        <a-entity id="slide3"
+          geometry="primitive: box; width: 2; height: 6; depth: 0.5"
+                    material="color: blue; shader: standard"
+                    position="-3 1 -4"
+                    rotation="-80 90 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="piece"
+                    geometry="primitive: box; width: 2; height: 2; depth: 2"
+                    class="clickable"
+                    material="color: green; shader: standard"
+                    position="8 -1 0"
+                    static-body
+                    grabbing="">
+        </a-entity>
         <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 
       </a-scene>
