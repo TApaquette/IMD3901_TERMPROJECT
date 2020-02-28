@@ -8,6 +8,7 @@
       <script src="js/done.js"></script>
       <script src="js/point-save.js"></script>
       <script src="js/new-geo.js"></script>
+      <script src="js/setmaterial.js"></script>
     </head>
     <body>
       <a-scene>
@@ -261,6 +262,36 @@
               geometry="primitive:plane; width:1.0; height:0.5;" 
               material="color:green;"
               done=''></a-entity>
+
+              <!--Material Set Buttons-->
+        <a-entity id="normalbutton"
+              class="clickable setmaterial_normal"
+              position="4 5 -5"
+              scale="1 1 1"
+              geometry="primitive:plane; width:1.0; height:0.5;"
+              material="color:yellow;"
+              setmaterial=''
+        ></a-entity>
+
+        <a-entity id="bouncybutton"
+              class="clickable setmaterial_bounce"
+              position="4 4 -5"
+              scale=" 1 1 1"
+              geometry="primitive:plane; width:1.0; height:0.5;"
+              material="color:yellow;"
+              setmaterial=''
+        ></a-entity>
+
+        <a-entity id="slipperybutton"
+              class="clickable setmaterial_slip"
+              position="4 3 -5"
+              scale=" 1 1 1"
+              geometry="primitive:plane; width:1.0; height:0.5;"
+              material="color:yellow;"
+              setmaterial=''
+        ></a-entity>
+
+
 
       </a-scene>
 
