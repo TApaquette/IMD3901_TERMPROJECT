@@ -5,31 +5,36 @@ AFRAME.registerComponent( 'setmaterial',{
 
         const Context_AF = this;
 
-        Context_AF.el.addEventListener('click', function(event){
+        
 
-            if(document.querySelector('.setmaterial_slip')){
-                console.log('slipperyclick')
-                Context_AF.el.object3D.material.set('blue');
-                Context_AF.el.object3D.class.set('slipMaterial');
+        document.querySelector('.setmaterial_slip').addEventListener('click', function(event){
+            console.log('slipperyclick')
+            //Context_AF.el.object3D.material.set('blue');
+            Context_AF.material = 'blue';
+            //Context_AF.el.object3D.class.set('slipMaterial');
 
-            }
+            console.log("hello", Context_AF.material)
+        });
 
-            else if (document.querySelector('.setmaterial_bounce')){
-                console.log('bounceclick')
-                Context_AF.el.object3D.material.set('orange');
-                Context_AF.el.object3D.class.set('bounceMaterial');
-            }
+        document.querySelector('.setmaterial_bounce').addEventListener('click', function(event){
+            console.log('bounceclick')
+            //Context_AF.el.object3D.material.set('orange');
+            Context_AF.material = 'orange';
+            //Context_AF.el.object3D.class.set('bounceMaterial');
 
-            else (document.querySelector('.setmaterial_normal')){
-                console.log('normalclick')
-                Context_AF.el.object3D.material.set('grey')
-                Context_AF.el.object3D.class.set('defaultMaterial');
+            console.log("hello", Context_AF.material)
+        });
 
-            }
+        document.querySelector('.setmaterial_normal').addEventListener('click', function(event){
+            console.log('normalclick')
+            //Context_AF.el.object3D.material.set('grey');
+            Context_AF.material = 'grey';
+            //Context_AF.el.object3D.class.set('defaultMaterial');
 
-            let scene = document.querySelector('a-scene');
-            scene.appendChild(createdShape);
-            });
+            console.log("hello", Context_AF.material)
+        });
+
+        console.log("hello", Context_AF.material)
             
         Context_AF.el.addEventListener('mouseenter', function(event) {
             Context_AF.el.object3D.scale.set(1.1, 1.1, 1.1); 

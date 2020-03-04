@@ -39,10 +39,7 @@ AFRAME.registerComponent( 'done',{
             var pointFour = Context_AF.drawPoints[3].x + " " + Context_AF.drawPoints[3].y + " " + Context_AF.drawPoints[3].z;
 
             Context_AF.verts = pointOne + "," + pointTwo + "," + pointThree + "," + pointFour;
-      
 
-            //let scene = document.querySelector('a-scene');
-            //scene.appendChild(createdShape);
             });
 
         Context_AF.el.addEventListener('mouseenter', function(event) {

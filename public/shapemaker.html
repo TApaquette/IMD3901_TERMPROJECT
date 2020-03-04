@@ -308,6 +308,12 @@
                 socket.emit('doneClicked', document.querySelector('#donebutton').components['done'].verts);
             });
 
+        //in progress does not work yet
+        document.querySelector('#normalbutton').addEventListener('click', function() {
+                socket.emit('normalClicked', document.querySelector('#normalbutton').components['setmaterial'].material);
+                console.log("normal button press emitted");
+            });
+
       
       </script>
 

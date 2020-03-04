@@ -32,6 +32,12 @@ socketIO.on('connection', function(socket) {
         socketIO.sockets.emit('generate_shape', data);
     });
 
+    //in progress does not work yet
+    socket.on('normalClicked', function(data) {
+        console.log('the normal property button was clicked');
+        socketIO.sockets.emit('set_normal', data);
+    });
+
 });
 
 

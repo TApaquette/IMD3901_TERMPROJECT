@@ -119,6 +119,13 @@
             let scene = document.querySelector('a-scene');
             scene.appendChild(createdShape);
         });
+
+        //in progress does not work yet
+        socket.on('set_normal', function(data) {
+          console.log("normal button press received");
+
+          
+        });
       
       </script>
     </body>
