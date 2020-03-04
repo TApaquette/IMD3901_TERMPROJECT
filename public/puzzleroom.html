@@ -121,13 +121,17 @@
                     static-body>
         </a-entity>
 
+        <a-entity id="spot"
+                    position="0 0 0"
+        ></a-entity>
+
         <a-entity id="piece"
                     geometry="primitive: box; width: 2; height: 2; depth: 2"
-                    class="clickable"
+                    class="clickable notgrab"
                     material="color: green; shader: standard"
-                    position="8 -1 0"
-                    static-body
-                    grabbing="">
+                    position="8 1 0"
+                    grabbing=""
+                    static-body>
         </a-entity>
         <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 

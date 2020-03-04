@@ -18,11 +18,31 @@ AFRAME.registerComponent( 'grabbing',{
         
         Context_AF.el.addEventListener('click', function(event) {
             console.log("click");
+            let spot = document.querySelector("#spot");
 
             let camera = document.querySelector("#camera");
-            Context_AF.el.object3D.position.set(0,0, -10);
 
-            camera.object3D.add(Context_AF.el.object3D);
+            if(Context_AF.el.getAttribute('class') === "clickable notgrab"){
+                Context_AF.el.object3D.position.set(0,0, -10);
+                Context_AF.el.setAttribute('class', 'clickable grab');
+
+                camera.object3D.add(Context_AF.el.object3D);
+            }
+
+            else if(Context_AF.el.getAttribute('class') === "clickable grab"){
+                var position = new THREE.Vector3();
+                console.log(this.object3D.getWorldPosition(position));
+
+                Context_AF.el.object3D.position.set(position.x, position.y, position.z);
+
+                spot.object3D.add(Context_AF.el.object3D);
+                Context_AF.el.setAttribute('class', 'clickable notgrab');
+
+                
+
+                
+                
+            }
 
             
         });
