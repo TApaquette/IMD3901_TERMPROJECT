@@ -9,28 +9,23 @@ AFRAME.registerComponent( 'setmaterial',{
 
             if(document.querySelector('.setmaterial_slip')){
                 console.log('slipperyclick')
-                Context_AF.el.object3D.material.set
+                Context_AF.el.object3D.material.set('blue');
+                Context_AF.el.object3D.class.set('slipMaterial');
 
             }
 
             else if (document.querySelector('.setmaterial_bounce')){
                 console.log('bounceclick')
-                Context_AF.el.object3D.material.set
+                Context_AF.el.object3D.material.set('orange');
+                Context_AF.el.object3D.class.set('bounceMaterial');
             }
 
-            else if (document.querySelector('.setmaterial_normal')){
+            else (document.querySelector('.setmaterial_normal')){
                 console.log('normalclick')
-                Context_AF.el.object3D.material.set
+                Context_AF.el.object3D.material.set('grey')
+                Context_AF.el.object3D.class.set('defaultMaterial');
+
             }
-
-
-
-
-
-
-
-
-
 
             let scene = document.querySelector('a-scene');
             scene.appendChild(createdShape);
