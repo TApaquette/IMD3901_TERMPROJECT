@@ -165,7 +165,7 @@
             createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
              
             createdShape.addEventListener('loaded', function(){
-                createdShape.setAttribute('material', 'color:' + data.material);
+                createdShape.setAttribute('material', 'color:' + data.material + "; side: double");
                 createdShape.setAttribute('grabbing', '');
                 createdShape.setAttribute('static-body', '');
             })
