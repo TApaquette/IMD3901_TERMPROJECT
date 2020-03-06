@@ -7,7 +7,6 @@ AFRAME.registerComponent( 'done',{
 
         const Context_AF = this;
         
-    
         Context_AF.el.addEventListener('click', function(event) {
              Context_AF.drawPoints = [];
 
@@ -19,8 +18,7 @@ AFRAME.registerComponent( 'done',{
                 console.log(selected.length);
             
             for(i = 0; i < 4; i++){
-                let pointfound = selected[i].getAttribute('position')
-                
+                let pointfound = selected[i].getAttribute('position') 
             }
 
             selected[0].object3D.position; //three.js
@@ -40,27 +38,17 @@ AFRAME.registerComponent( 'done',{
             var pointThree = Context_AF.drawPoints[2].x + " " + Context_AF.drawPoints[2].y + " " + Context_AF.drawPoints[2].z;
             var pointFour = Context_AF.drawPoints[3].x + " " + Context_AF.drawPoints[3].y + " " + Context_AF.drawPoints[3].z;
 
-            var verts = pointOne + "," + pointTwo + "," + pointThree + "," + pointFour;
-      
-            document.querySelector('#shape').setAttribute('geometry', 'primitive: new-geo; vertices:' + verts);
-           
-           
+            Context_AF.verts = pointOne + "," + pointTwo + "," + pointThree + "," + pointFour;
+
             });
 
-
-
         Context_AF.el.addEventListener('mouseenter', function(event) {
-            Context_AF.el.object3D.scale.set(1.1, 1.1, 1.1);
-
-            
+            Context_AF.el.object3D.scale.set(1.1, 1.1, 1.1); 
         });
     
         Context_AF.el.addEventListener('mouseleave', function(event) {
             Context_AF.el.object3D.scale.set(1.0, 1.0, 1.0);
-         
         });
-
     },        
-
 })
-//this.el.getAttribute("position")//
+
