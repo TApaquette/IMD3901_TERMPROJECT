@@ -158,6 +158,7 @@
             createdShape.setAttribute('id', 'shape' + counter);
 
             createdShape.setAttribute('new-geo', '');
+            createdShape.setAttribute('class', "clickable notgrab");
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
             createdShape.setAttribute('position', '8.2 20 3'); 
             createdShape.setAttribute('rotation', '0 -90 0'); 
@@ -165,6 +166,8 @@
              
             createdShape.addEventListener('loaded', function(){
                 createdShape.setAttribute('material', 'color:' + data.material);
+                createdShape.setAttribute('grabbing', '');
+                createdShape.setAttribute('static-body', '');
             })
             
             counter++;
