@@ -6,7 +6,8 @@
   <head>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-
+    <script src="js/done.js"></script>
+    <script src="js/new-geo.js"></script>
 
   </head>
     <body>
@@ -91,5 +92,45 @@
         <a-plane id="glass" position="0 0 -2" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 
       </a-scene>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        let socket = io();
+
+        let counter = 0;
+
+        //default connect event
+        socket.on('connect', function() {
+                console.log("connected!");
+        });
+
+        socket.on('generate_shape', function(data) {
+          console.log("shape received");
+
+          var z = Math.random() * 9 - 2.5;
+
+          let createdShape = document.createElement('a-entity');
+            createdShape.setAttribute('id', 'shape' + counter);
+
+            createdShape.setAttribute('new-geo', '');
+            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
+            createdShape.setAttribute('position', '8.2 20 3'); 
+            createdShape.setAttribute('rotation', '0 -90 0'); 
+            createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
+             
+            createdShape.addEventListener('loaded', function(){
+                createdShape.setAttribute('material', 'color:' + data.material);
+            })
+            
+            counter++;
+
+            let scene = document.querySelector('a-scene');
+            scene.appendChild(createdShape);
+        });
+
+
+        
+      
+      </script>
     </body>
 </html>
