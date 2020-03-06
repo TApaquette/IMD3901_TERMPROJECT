@@ -97,6 +97,8 @@
       <script>
         let socket = io();
 
+        let counter = 0;
+
         //default connect event
         socket.on('connect', function() {
                 console.log("connected!");
@@ -108,24 +110,26 @@
           var z = Math.random() * 9 - 2.5;
 
           let createdShape = document.createElement('a-entity');
-            createdShape.setAttribute('id', 'shape');
+            createdShape.setAttribute('id', 'shape' + counter);
+
             createdShape.setAttribute('new-geo', '');
-            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data);
+            createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
             createdShape.setAttribute('position', '8.2 20 3'); 
             createdShape.setAttribute('rotation', '0 -90 0'); 
             createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
              
+            createdShape.addEventListener('loaded', function(){
+                createdShape.setAttribute('material', 'color:' + data.material);
+            })
             
+            counter++;
+
             let scene = document.querySelector('a-scene');
             scene.appendChild(createdShape);
         });
 
-        //in progress does not work yet
-        socket.on('set_normal', function(data) {
-          console.log("normal button press received");
 
-          
-        });
+        
       
       </script>
     </body>

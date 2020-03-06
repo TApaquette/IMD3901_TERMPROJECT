@@ -9,7 +9,6 @@ AFRAME.registerComponent( 'setmaterial',{
 
         document.querySelector('.setmaterial_slip').addEventListener('click', function(event){
             console.log('slipperyclick')
-            //Context_AF.el.object3D.material.set('blue');
             Context_AF.material = 'blue';
             //Context_AF.el.object3D.class.set('slipMaterial');
 
@@ -18,7 +17,6 @@ AFRAME.registerComponent( 'setmaterial',{
 
         document.querySelector('.setmaterial_bounce').addEventListener('click', function(event){
             console.log('bounceclick')
-            //Context_AF.el.object3D.material.set('orange');
             Context_AF.material = 'orange';
             //Context_AF.el.object3D.class.set('bounceMaterial');
 
@@ -27,7 +25,6 @@ AFRAME.registerComponent( 'setmaterial',{
 
         document.querySelector('.setmaterial_normal').addEventListener('click', function(event){
             console.log('normalclick')
-            //Context_AF.el.object3D.material.set('grey');
             Context_AF.material = 'grey';
             //Context_AF.el.object3D.class.set('defaultMaterial');
 

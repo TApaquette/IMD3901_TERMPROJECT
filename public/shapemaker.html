@@ -279,7 +279,6 @@
               scale=" 1 1 1"
               geometry="primitive:plane; width:1.0; height:0.5;"
               material="color:yellow;"
-              setmaterial=''
         ></a-entity>
 
         <a-entity id="slipperybutton"
@@ -288,7 +287,6 @@
               scale=" 1 1 1"
               geometry="primitive:plane; width:1.0; height:0.5;"
               material="color:yellow;"
-              setmaterial=''
         ></a-entity>
 
 
@@ -305,15 +303,13 @@
         });
 
         document.querySelector('#donebutton').addEventListener('click', function() {
-                socket.emit('doneClicked', document.querySelector('#donebutton').components['done'].verts);
-            });
+                let data = {  verts: document.querySelector('#donebutton').components['done'].verts,
+                              material: document.querySelector('#normalbutton').components['setmaterial'].material 
+                            };
 
-        //in progress does not work yet
-        document.querySelector('#normalbutton').addEventListener('click', function() {
-                socket.emit('normalClicked', document.querySelector('#normalbutton').components['setmaterial'].material);
-                console.log("normal button press emitted");
-            });
+                socket.emit('doneClicked', data);
 
+            });
       
       </script>
 
