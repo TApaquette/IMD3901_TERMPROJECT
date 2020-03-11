@@ -37,6 +37,14 @@
           <a-asset-item id="tableObj" src="assets/models/Table.obj"></a-asset-item>
           
           <a-asset-item id="wallsObj" src="assets/models/Walls.obj"></a-asset-item>
+
+          <a-asset-item id="ceilingObj" src="assets/models/Ceiling.obj"></a-asset-item>
+
+          <a-asset-item id="pipeObj" src="assets/models/Pipe.obj"></a-asset-item>
+
+          <a-asset-item id="sidepipeObj" src="assets/models/Side_Pipe.obj"></a-asset-item>
+
+          <a-asset-item id="ventObj" src="assets/models/Vent.obj"></a-asset-item>
   
         </a-assets>
         <a-sky id="background" src="#skyTexture"></a-sky>
@@ -75,6 +83,34 @@
                     position="-1 -7 6"
                     rotation="0 0 0"
                     static-body>
+        </a-entity>
+
+        <a-entity id="ceiling"
+                    obj-model="obj: #ceilingObj"
+                    material="src:assets/textures/CeilingTexture.png;"
+                    position="-1 -7 6"
+                    rotation="0 0 0">
+        </a-entity>
+
+        <a-entity id="sidepipe"
+                obj-model="obj: #sidepipeObj"
+                material="src:assets/textures/Pipe_SupportTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
+        </a-entity>
+
+        <a-entity id="pipe"
+                obj-model="obj: #pipeObj"
+                material="src:assets/textures/PipesTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
+        </a-entity>
+        
+        <a-entity id="vent"
+                obj-model="obj: #ventObj"
+                material="src:assets/textures/VentTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
         </a-entity>
         
         <a-entity id="bucket"
@@ -163,9 +199,11 @@
             createdShape.setAttribute('new-geo', '');
             createdShape.setAttribute('class', "clickable notgrab");
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
-            createdShape.setAttribute('position', '8.2 20 3'); 
-            createdShape.setAttribute('rotation', '0 -90 0'); 
-            createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
+            createdShape.setAttribute('position', '8.2 5 3'); 
+            createdShape.setAttribute('rotation', '0 -90 0');
+            createdShape.setAttribute('scale', '0.1 0.1 0.1');
+            createdShape.setAttribute('animation', 'property: scale; to: 1 1 1; loop: false; dur: 700'); 
+            createdShape.setAttribute('animation__2', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
              
             createdShape.addEventListener('loaded', function(){
                 createdShape.setAttribute('material', 'color:' + data.material + "; side: double");
