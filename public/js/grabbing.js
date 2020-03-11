@@ -36,6 +36,8 @@ AFRAME.registerComponent( 'grabbing',{
                 Context_AF.el.object3D.position.set(position.x, position.y, -5);
                 Context_AF.el.object3D.rotation.set(0, 0, 0);
 
+                
+
                 spot.object3D.add(Context_AF.el.object3D);
                 Context_AF.el.setAttribute('class', 'clickable notgrab');
 
