@@ -15,13 +15,16 @@
   </head>
     <body>
       <a-scene id= "scen" physics="friction: 0.1">
-        <a-entity id="rig" position="0 4 4">
+        <a-entity id="rig" position="0 -1 2" >
           <a-entity id="camera" camera look-controls wasd-controls>
             <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
             material="color: gray; opacity: 0.5"></a-entity>
+
           </a-entity>
           <a-entity cursor="rayOrigin:mouse;"
                     raycaster="far:20; interval:100; objects:.clickable;">
+          <a-entity oculus-touch-controls="hand: left"></a-entity>
+          <a-entity oculus-touch-controls="hand: right"></a-entity>
           </a-entity>
         </a-entity>
 
@@ -34,6 +37,14 @@
           <a-asset-item id="tableObj" src="assets/models/Table.obj"></a-asset-item>
           
           <a-asset-item id="wallsObj" src="assets/models/Walls.obj"></a-asset-item>
+
+          <a-asset-item id="ceilingObj" src="assets/models/Ceiling.obj"></a-asset-item>
+
+          <a-asset-item id="pipeObj" src="assets/models/Pipe.obj"></a-asset-item>
+
+          <a-asset-item id="sidepipeObj" src="assets/models/Side_Pipe.obj"></a-asset-item>
+
+          <a-asset-item id="ventObj" src="assets/models/Vent.obj"></a-asset-item>
   
         </a-assets>
         <a-sky id="background" src="#skyTexture"></a-sky>
@@ -41,7 +52,7 @@
         <a-entity id="player_ball"
           geometry="primitive: sphere; radius: 0.5"
                     material="color: #4CC3D9; shader: standard"
-                    position="-7 9 -4"
+                    position="-7 9 -5"
                     rotation="0 0 0"
                     static-body>
         </a-entity>
@@ -50,7 +61,7 @@
         class="clickable"
           geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
                     material="color: green; shader: standard"
-                    position="-9.5 9 -4"
+                    position="-9.5 9 -5"
                     rotation="0 0 0"
                     
                     go-button="">
@@ -60,7 +71,7 @@
         class="clickable"
           geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
                     material="color: red; shader: standard"
-                    position="-9.5 7 -4"
+                    position="-9.5 7 -5"
                     rotation="0 0 0"
                     
                     reset-button="">
@@ -73,11 +84,39 @@
                     rotation="0 0 0"
                     static-body>
         </a-entity>
+
+        <a-entity id="ceiling"
+                    obj-model="obj: #ceilingObj"
+                    material="src:assets/textures/CeilingTexture.png;"
+                    position="-1 -7 6"
+                    rotation="0 0 0">
+        </a-entity>
+
+        <a-entity id="sidepipe"
+                obj-model="obj: #sidepipeObj"
+                material="src:assets/textures/Pipe_SupportTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
+        </a-entity>
+
+        <a-entity id="pipe"
+                obj-model="obj: #pipeObj"
+                material="src:assets/textures/PipesTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
+        </a-entity>
+        
+        <a-entity id="vent"
+                obj-model="obj: #ventObj"
+                material="src:assets/textures/VentTexture.png;"
+                position="-1 -7 6"
+                rotation="0 0 0">
+        </a-entity>
         
         <a-entity id="bucket"
                     obj-model="obj: #bucketObj"
                     material="color: purple; shader: standard"
-                    position="-3.5 -5 6"
+                    position="2 -1.1 5"
                     rotation="0 0 0"
                     static-body>
         </a-entity>
@@ -98,30 +137,6 @@
                     static-body>
         </a-entity>
 
-        <a-entity id="slide1"
-          geometry="primitive: box; width: 2; height: 10; depth: 0.5"
-                    material="color: blue; shader: standard"
-                    position="-2.25 6 -4"
-                    rotation="-75 90 0"
-                    static-body>
-        </a-entity>
-
-        <a-entity id="slide2"
-          geometry="primitive: box; width: 2; height: 10; depth: 0.5"
-                    material="color: blue; shader: standard"
-                    position="4 3 -4"
-                    rotation="-120 90 0"
-                    static-body>
-        </a-entity>
-        
-        <a-entity id="slide3"
-          geometry="primitive: box; width: 2; height: 6; depth: 0.5"
-                    material="color: blue; shader: standard"
-                    position="-3 1 -4"
-                    rotation="-80 90 0"
-                    static-body>
-        </a-entity>
-
         <a-entity id="spot"
                     position="0 0 0"
         ></a-entity>
@@ -134,7 +149,7 @@
                     grabbing=""
                     static-body>
         </a-entity>
-        <a-plane id="glass" position="0 0 -3" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
+        <a-plane id="glass" position="0 0 -4.0" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
 
       </a-scene>
 
@@ -158,13 +173,17 @@
             createdShape.setAttribute('id', 'shape' + counter);
 
             createdShape.setAttribute('new-geo', '');
+            createdShape.setAttribute('class', "clickable notgrab");
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
-            createdShape.setAttribute('position', '8.2 20 3'); 
-            createdShape.setAttribute('rotation', '0 -90 0'); 
+            createdShape.setAttribute('position', '8.2 4 3'); 
+            createdShape.setAttribute('rotation', '0 -90 0');
+
             createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
              
             createdShape.addEventListener('loaded', function(){
-                createdShape.setAttribute('material', 'color:' + data.material);
+                createdShape.setAttribute('material', 'color:' + data.material + "; side: double");
+                createdShape.setAttribute('grabbing', '');
+                createdShape.setAttribute('static-body', '');
             })
             
             counter++;
