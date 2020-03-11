@@ -21,7 +21,7 @@ AFRAME.registerComponent( 'reset-button',{
         Context_AF.el.addEventListener('click', function(event) {
             console.log("click");
             let ball = document.querySelector("#player_ball");
-            document.querySelectorAll(".notgrab").forEach(e => e.parentNode.removeChild(e));
+            //document.querySelectorAll(".notgrab").forEach(e => e.parentNode.removeChild(e));
        
 
             if (ball.hasAttribute('dynamic-body')){

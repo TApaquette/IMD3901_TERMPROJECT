@@ -9,6 +9,7 @@
       <script src="js/point-save.js"></script>
       <script src="js/new-geo.js"></script>
       <script src="js/setmaterial.js"></script>
+      <script src="js/ortho.js"></script>
     </head>
     <body>
       <a-scene>
@@ -16,12 +17,12 @@
 
         </a-assets>
 
-        <a-sky material ="color:gray"></a-sky>
+        <a-sky material ="color:mediumpurple"></a-sky>
 
         <!-- camera group -->
-        <a-entity id="rig" position="0 2 5">
-          <a-entity camera look-controls></a-entity>
-            <a-entity cursor="rayOrigin:mouse;"
+        <a-entity id="rig" position="0 2 4">
+          <a-entity camera></a-entity>
+            <a-entity cursor="rayOrigin:mouse; fuse:false;"
                       raycaster="far:20; interval:100; objects:.clickable;">
             </a-entity>
           </a-entity>
@@ -31,225 +32,148 @@
               position="0 2 0.5"
               rotation="0 0 0" 
               scale="1 1 1"
-              geometry="primitive:plane; width:5.0; height:5.0;" 
+              geometry="primitive:plane; width:6.0; height:6.0;" 
               material="color:darkorange;"></a-entity>
         
 
-              <!-- X COORDINATES -->
-              <a-entity id="pointX0/Y4"
-              class="clickable inactive"
-              position="-2 4 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-        
-              <a-entity id="pointX1/Y4"
-              class="clickable inactive"
-              position="-1 4 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              <a-entity id="pointX2/Y4"
-              class="clickable inactive"
-              position="0 4 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-              
-              <a-entity id="pointX3/Y4"
-              class="clickable inactive"
-              position="1 4 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              <a-entity id="pointX4/Y4"
-              class="clickable inactive"
-              position="2 4 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              
-              <a-entity id="pointX4/Y3"
-              class="clickable inactive"
-              position="2 3 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              
-              <a-entity id="pointX4/Y2"
-              class="clickable inactive"
-              position="2 2 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              
-              <a-entity id="pointX4/Y1"
-              class="clickable inactive"
-              position="2 1 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              
-              <a-entity id="pointX4/Y0"
-              class="clickable inactive"
-              position="2 0 0.5"
-              scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
-              material="color:blue"
-              point-save=''></a-entity> 
-
-              
+              <!-- X COORDINATES -->             
               <a-entity id="pointX3/Y3"
               class="clickable inactive"
-              position="1 3 0.5"
+              position="2.5 4.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX3/Y2"
               class="clickable inactive"
-              position="1 2 0.5"
+              position="2.5 2.8 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX3/Y1"
               class="clickable inactive"
-              position="1 1 0.5"
+              position="2.5 1.2 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX3/Y0"
               class="clickable inactive"
-              position="1 0 0.5"
+              position="2.5 -0.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX2/Y3"
               class="clickable inactive"
-              position="0 3 0.5"
+              position="0.75 4.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX2/Y2"
               class="clickable inactive"
-              position="0 2 0.5"
+              position="0.75 2.8 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity>
               
               
               <a-entity id="pointX2/Y1"
               class="clickable inactive"
-              position="0 1 0.5"
+              position="0.75 1.2 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX2/Y0"
               class="clickable inactive"
-              position="0 0 0.5"
+              position="0.75 -0.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX1/Y3"
               class="clickable inactive"
-              position="-1 3 0.5"
+              position="-0.75 4.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX1/Y2"
               class="clickable inactive"
-              position="-1 2 0.5"
+              position="-0.75 2.8 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               
               <a-entity id="pointX1/Y1"
               class="clickable inactive"
-              position="-1 1 0.5"
+              position="-0.75 1.2 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity>
               
               
               <a-entity id="pointX1/Y0"
               class="clickable inactive"
-              position="-1 0 0.5"
+              position="-0.75 -0.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               <!-- Y COORDINATES -->
               <a-entity id="pointX0/Y3"
               class="clickable inactive"
-              position="-2 3 0.5"
+              position="-2.5 4.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
         
               <a-entity id="pointX0/Y2"
               class="clickable inactive"
-              position="-2 2 0.5"
+              position="-2.5 2.8 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
               <a-entity id="pointX0/Y1"
               class="clickable inactive"
-              position="-2 1 0.5"
+              position="-2.5 1.2 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
         
               <a-entity id="pointX0/Y0"
               class="clickable inactive"
-              position="-2 0 0.5"
+              position="-2.5 -0.4 0.5"
               scale="1 1 1"
-              geometry="primitive:sphere; radius:0.2;"
+              geometry="primitive:sphere; radius:0.3;"
               material="color:blue"
               point-save=''></a-entity> 
 
@@ -257,36 +181,36 @@
 
         <a-entity id="donebutton"
               class="clickable finish"
-              position="4 0 0.5"
+              position="4.5 2 0.5"
               scale="1 1 1"
-              geometry="primitive:plane; width:1.0; height:0.5;" 
+              geometry="primitive:plane; width:2.0; height:2.5;" 
               material="color:green;"
               done=''></a-entity>
 
               <!--Material Set Buttons-->
         <a-entity id="normalbutton"
               class="clickable setmaterial_normal"
-              position="4 5 0.5"
+              position="-4.5 4 0.5"
               scale="1 1 1"
-              geometry="primitive:plane; width:1.0; height:0.5;"
-              material="color:yellow;"
+              geometry="primitive:plane; width:2.0; height:1;"
+              material="color:grey;"
               setmaterial=''
         ></a-entity>
 
         <a-entity id="bouncybutton"
               class="clickable setmaterial_bounce"
-              position="4 4 0.5"
+              position="-4.5 2 0.5"
               scale=" 1 1 1"
-              geometry="primitive:plane; width:1.0; height:0.5;"
-              material="color:yellow;"
+              geometry="primitive:plane; width:2.0; height:1;"
+              material="color:orange;"
         ></a-entity>
 
         <a-entity id="slipperybutton"
               class="clickable setmaterial_slip"
-              position="4 3 0.5"
+              position="-4.5 0 0.5"
               scale=" 1 1 1"
-              geometry="primitive:plane; width:1.0; height:0.5;"
-              material="color:yellow;"
+              geometry="primitive:plane; width:2.0; height:1;"
+              material="color:blue;"
         ></a-entity>
 
 
