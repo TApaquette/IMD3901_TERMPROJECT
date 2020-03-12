@@ -25,13 +25,13 @@ AFRAME.registerComponent( 'reset-button',{
 
             if (ball.hasAttribute('dynamic-body')){
                 ball.removeAttribute('dynamic-body');
-                ball.setAttribute('position', "-7 9 -5");
+                ball.setAttribute('position', "-1.6 -4.9 3.8");
                 ball.setAttribute('static-body', '');
             }
 
             
             else if(ball.hasAttribute('static-body')){
-                ball.setAttribute('position', "-7 9 -5");
+                ball.setAttribute('position', "-1.6 -4.9 3.8");
             }
                 
 

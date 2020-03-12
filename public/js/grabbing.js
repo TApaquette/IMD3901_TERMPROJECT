@@ -6,13 +6,13 @@ AFRAME.registerComponent( 'grabbing',{
         const Context_AF = this;
 
         Context_AF.el.addEventListener('mouseenter', function(event) {
-            Context_AF.el.object3D.scale.set(1.1, 1.1, 1.1);
+            Context_AF.el.object3D.scale.set(0.12, 0.12, 0.12);
 
             
         });
     
         Context_AF.el.addEventListener('mouseleave', function(event) {
-            Context_AF.el.object3D.scale.set(1.0, 1.0, 1.0);
+            Context_AF.el.object3D.scale.set(0.1, 0.1, 0.1);
          
         });
         
@@ -23,7 +23,7 @@ AFRAME.registerComponent( 'grabbing',{
             let camera = document.querySelector("#camera");
 
             if(Context_AF.el.getAttribute('class') === "clickable notgrab"){
-                Context_AF.el.object3D.position.set(0,0, -10);
+                Context_AF.el.object3D.position.set(0,0, -1);
                 Context_AF.el.setAttribute('class', 'clickable grab');
 
                 camera.object3D.add(Context_AF.el.object3D);
@@ -33,7 +33,7 @@ AFRAME.registerComponent( 'grabbing',{
                 var position = new THREE.Vector3();
                 console.log(this.object3D.getWorldPosition(position));
 
-                Context_AF.el.object3D.position.set(position.x, position.y, -5);
+                Context_AF.el.object3D.position.set(position.x, position.y, 3.77);
                 Context_AF.el.object3D.rotation.set(0, 0, 0);
 
                 
