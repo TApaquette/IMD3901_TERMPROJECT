@@ -122,8 +122,22 @@ AFRAME.registerComponent( 'grabbing',{
                 Context_AF.el.setAttribute('class', 'clickable notgrab grabbable');  
             }
 
+            if (Context_AF.el.getAttribute('position') < {x: -0.25, y: -6, z: 4} && Context_AF.el.object3D.getAttribute('position') > {x: -1.7, y: -20, z: 3}){
+                console.log("in the nono zone: ", Context_AF.el.getAttribute('position'))
+            }
+            else{
+                console.log("you good: ", Context_AF.el.getAttribute('position'))
+            }
             
         });
 
-    }
+    },
 })
+
+
+// if (shapePos.x < -0.25 && shapePos.x > -1.7 && shapePos.z < 4 && shapePos.z > 3 && shapePos.y < -6.5) { //if dropped on the destroyer plane
+//     console.log('dump');
+//     shapeLocation.parentNode.removeChild( shapeLocation ); //delete
+// }else{
+//     console.log('not in zone'); //if dropped in the regular area
+// }
