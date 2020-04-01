@@ -11,20 +11,58 @@
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="js/done.js"></script>
     <script src="js/new-geo.js"></script>
+    <script src="js/collider.js"></script>
 
   </head>
     <body>
-      <a-scene id= "scen" physics="friction: 0.1">
+      <a-scene id= "scene" physics="friction: 0.1" physics="debug:true">
         <a-entity id="rig" position="-1 -6.8 5" >
           <a-entity id="camera" camera look-controls wasd-controls position="0 1.3 0">
             <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
             material="color: gray; opacity: 0.5"></a-entity>
 
           </a-entity>
+
+   
+
           <a-entity cursor="rayOrigin:mouse;"
                     raycaster="far:20; interval:100; objects:.clickable;">
-          <a-entity oculus-touch-controls="hand: left"></a-entity>
-          <a-entity oculus-touch-controls="hand: right"></a-entity>
+
+        <!--Hand-->
+
+          <!--<a-entity id="leftController" 
+              static-body="shape: sphere; sphereRadius: 0.2;" 
+              oculus-touch-controls="hand: left" 
+              sphere-collider="objects: .grabbable" 
+              grab="" 
+              collider="">
+          </a-entity>-->
+          <a-entity id="leftController" 
+              static-body="shape: auto;" 
+              oculus-touch-controls="hand: left"  
+              grab="" 
+              collider="">
+              <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 10" 
+                            line="color: blue;" 
+                            position="0 0 0" 
+                            rotation="0 0 0"></a-entity>
+          </a-entity>
+
+          <a-entity id="rightController" 
+              static-body="shape: auto;" 
+              oculus-touch-controls="hand: right"  
+              grab="" 
+              collider="">
+              <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 10" 
+                            line="color: blue;" 
+                            position="0 0 0" 
+                            rotation="0 0 0"></a-entity>
+          </a-entity>
+
+          <!--id="leftController" static-body="shape: sphere; sphereRadius: 0.02;" oculus-touch-controls="hand: left" sphere-collider="objects: .grabbable" grab-->
+
           </a-entity>
         </a-entity>
 
@@ -50,7 +88,7 @@
         <a-sky id="background" src="#skyTexture"></a-sky>
 
         <a-entity id="player_ball"
-          geometry="primitive: sphere; radius: 0.04"
+                    geometry="primitive: sphere; radius: 0.04"
                     material="color: #4CC3D9; shader: standard"
                     position="-1.6 -4.9 3.77"
                     rotation="0 0 0"
@@ -58,7 +96,7 @@
         </a-entity>
 
         <a-entity id="done_button"
-        class="clickable"
+        class="clickable grabbable"
           geometry="primitive: box; width: 0.2; height: 0.05; depth: 0.1"
                     material="color: green; shader: standard"
                     position="-1.7 -5.95 4"
@@ -67,8 +105,8 @@
         </a-entity>
 
         <a-entity id="reset_button"
-        class="clickable"
-          geometry="primitive: box; width: 0.2; height: 0.05; depth: 0.1"
+                    class="clickable grabbable"
+                    geometry="primitive: box; width: 0.2; height: 0.05; depth: 0.1"
                     material="color: red; shader: standard"
                     position="-1.7 -5.95 4.2"
                     rotation="0 0 0"
@@ -147,16 +185,8 @@
                     position="0 0 0"
         ></a-entity>
 
-        <a-entity id="piece"
-                    geometry="primitive: box; width: 2; height: 2; depth: 2"
-                    class="clickable notgrab"
-                    material="color: green; shader: standard"
-                    position="8 1 0"
-                    grabbing=""
-                    static-body>
-        </a-entity>
         <a-plane id="glass" position="0 -4 3.93" rotation="180 0 0" width="20" height="20" color= blue static-body material="opacity: 0.5"></a-plane>
-        <a-plane id="glass" position="0 -5.97 3.93" rotation="-90 0 0" width="20" height="20" color= blue static-body material="opacity: 0.0"></a-plane>
+        <a-plane id="glass2" position="0 -5.97 3.93" rotation="-90 0 0" width="20" height="20" color= blue static-body material="opacity: 0.0"></a-plane>
 
       </a-scene>
 
@@ -181,9 +211,9 @@
             createdShape.setAttribute('id', 'shape' + counter);
 
             createdShape.setAttribute('new-geo', '');
-            createdShape.setAttribute('class', "clickable notgrab");
+            createdShape.setAttribute('class', "clickable notgrab grabbable");
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
-            createdShape.setAttribute('position', '-1 -4.4 4'); 
+            createdShape.setAttribute('position', '-1 -4.4 4');
             createdShape.setAttribute('scale', '0.1 0.1 0.1');
 
             createdShape.setAttribute('animation', 'property: position; to: ' + (x) + ' -5.98 '+ (z) +'; loop:false; dur: 1200');
