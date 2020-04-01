@@ -40,11 +40,13 @@ AFRAME.registerComponent( 'grabbing',{
                 Context_AF.el.setAttribute('class', 'clickable notgrab');             
             }
 
-            if (Context_AF.el.getAttribute('position') < {x: -0.25, y: -6, z: 4} && Context_AF.el.object3D.getAttribute('position') > {x: -1.7, y: -20, z: 3}){
-                console.log("in the nono zone: ", Context_AF.el.getAttribute('position'))
+            this.object3D.getWorldPosition(position)
+            if (Context_AF.el.object3D.position.x < -0.25 && Context_AF.el.object3D.position.x > -1.7 && Context_AF.el.object3D.position.y < -6.3 && Context_AF.el.object3D.position.z < 4 && Context_AF.el.object3D.position.z > 3){
+                console.log("in the nono zone: ", Context_AF.el.object3D.position)
+                Context_AF.el.object3D.parentNode.removeChild( Context_AF.el.object3D );
             }
             else{
-                console.log("you good: ", Context_AF.el.getAttribute('position'))
+                console.log("you good: ", Context_AF.el.object3D.position)
             }
             
         });
