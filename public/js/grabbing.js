@@ -141,7 +141,7 @@ AFRAME.registerComponent( 'grabbing',{
             this.object3D.getWorldPosition(position)
             if (Context_AF.el.object3D.position.x < -0.25 && Context_AF.el.object3D.position.x > -1.7 && Context_AF.el.object3D.position.y < -6.3 && Context_AF.el.object3D.position.z < 4 && Context_AF.el.object3D.position.z > 3){
                 console.log("in the nono zone: ", Context_AF.el.object3D.position);
-                Context_AF.el.parentNode.removeChild( Context_AF.el);
+                Context_AF.el.parentNode.removeChild( Context_AF.el );
             }
             else{
                 console.log("you good: ", Context_AF.el.object3D.position);
@@ -151,11 +151,3 @@ AFRAME.registerComponent( 'grabbing',{
 
     },
 })
-
-
-// if (shapePos.x < -0.25 && shapePos.x > -1.7 && shapePos.z < 4 && shapePos.z > 3 && shapePos.y < -6.5) { //if dropped on the destroyer plane
-//     console.log('dump');
-//     shapeLocation.parentNode.removeChild( shapeLocation ); //delete
-// }else{
-//     console.log('not in zone'); //if dropped in the regular area
-// }
