@@ -11,20 +11,59 @@
     <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
     <script src="js/done.js"></script>
     <script src="js/new-geo.js"></script>
+    <script src="js/collider.js"></script>
+    <script src="js/level-transition.js"></script>
 
   </head>
     <body>
-      <a-scene id= "scen" physics="friction: 0.1">
-        <a-entity id="rig" position="0 -1 2" >
-          <a-entity id="camera" camera look-controls wasd-controls>
+      <a-scene id= "scene" physics="friction: 0.01" physics="debug:true">
+        <a-entity id="rig" position="-1 -6.8 5" >
+          <a-entity id="camera" camera look-controls wasd-controls position="0 1.3 0">
             <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
             material="color: gray; opacity: 0.5"></a-entity>
 
           </a-entity>
+
+   
+
           <a-entity cursor="rayOrigin:mouse;"
                     raycaster="far:20; interval:100; objects:.clickable;">
-          <a-entity oculus-touch-controls="hand: left"></a-entity>
-          <a-entity oculus-touch-controls="hand: right"></a-entity>
+
+        <!--Hand-->
+
+          <!--<a-entity id="leftController" 
+              static-body="shape: sphere; sphereRadius: 0.2;" 
+              oculus-touch-controls="hand: left" 
+              sphere-collider="objects: .grabbable" 
+              grab="" 
+              collider="">
+          </a-entity>-->
+          <a-entity id="leftController" 
+              static-body="shape: auto;" 
+              oculus-touch-controls="hand: left"  
+              grab="" 
+              collider="">
+              <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 10" 
+                            line="color: blue;" 
+                            position="0 0 0" 
+                            rotation="0 0 0"></a-entity>
+          </a-entity>
+
+          <a-entity id="rightController" 
+              static-body="shape: auto;" 
+              oculus-touch-controls="hand: right"  
+              grab="" 
+              collider="">
+              <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 10" 
+                            line="color: blue;" 
+                            position="0 0 0" 
+                            rotation="0 0 0"></a-entity>
+          </a-entity>
+
+          <!--id="leftController" static-body="shape: sphere; sphereRadius: 0.02;" oculus-touch-controls="hand: left" sphere-collider="objects: .grabbable" grab-->
+
           </a-entity>
         </a-entity>
 
@@ -45,35 +84,36 @@
           <a-asset-item id="sidepipeObj" src="assets/models/Side_Pipe.obj"></a-asset-item>
 
           <a-asset-item id="ventObj" src="assets/models/Vent.obj"></a-asset-item>
+
+          <a-asset-item id="deleteTextObj" src="assets/models/deleteText.obj"></a-asset-item>
   
         </a-assets>
         <a-sky id="background" src="#skyTexture"></a-sky>
 
         <a-entity id="player_ball"
-          geometry="primitive: sphere; radius: 0.5"
+                    geometry="primitive: sphere; radius: 0.04"
                     material="color: #4CC3D9; shader: standard"
-                    position="-7 9 -5"
+                    position="-1.6 -4.75 3.77"
                     rotation="0 0 0"
+                    level-transition=""
                     static-body>
         </a-entity>
 
         <a-entity id="done_button"
-        class="clickable"
-          geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
+        class="clickable grabbable"
+          geometry="primitive: box; width: 0.2; height: 0.05; depth: 0.1"
                     material="color: green; shader: standard"
-                    position="-9.5 9 -5"
+                    position="-1.7 -5.95 4"
                     rotation="0 0 0"
-                    
                     go-button="">
         </a-entity>
 
         <a-entity id="reset_button"
-        class="clickable"
-          geometry="primitive: box; width: 2; height: 0.75; depth: 0.5"
+                    class="clickable grabbable"
+                    geometry="primitive: box; width: 0.2; height: 0.05; depth: 0.1"
                     material="color: red; shader: standard"
-                    position="-9.5 7 -5"
+                    position="-1.7 -5.95 4.2"
                     rotation="0 0 0"
-                    
                     reset-button="">
         </a-entity>
 
@@ -82,6 +122,7 @@
                     material="src:assets/textures/WallsTexture.png;"
                     position="-1 -7 6"
                     rotation="0 0 0"
+                    scale="0.2 0.2 0.2"
                     static-body>
         </a-entity>
 
@@ -89,6 +130,7 @@
                     obj-model="obj: #ceilingObj"
                     material="src:assets/textures/CeilingTexture.png;"
                     position="-1 -7 6"
+                    scale="0.2 0.2 0.2"
                     rotation="0 0 0">
         </a-entity>
 
@@ -96,44 +138,58 @@
                 obj-model="obj: #sidepipeObj"
                 material="src:assets/textures/Pipe_SupportTexture.png;"
                 position="-1 -7 6"
+                scale="0.2 0.2 0.2"
                 rotation="0 0 0">
         </a-entity>
 
         <a-entity id="pipe"
                 obj-model="obj: #pipeObj"
                 material="src:assets/textures/PipesTexture.png;"
-                position="-1 -7 6"
-                rotation="0 0 0">
+                position="-0.3 -7 5.9"
+                rotation="0 90 0"
+                scale="0.2 0.2 0.2">
         </a-entity>
         
         <a-entity id="vent"
                 obj-model="obj: #ventObj"
                 material="src:assets/textures/VentTexture.png;"
                 position="-1 -7 6"
+                scale="0.2 0.2 0.2"
                 rotation="0 0 0">
+        </a-entity>
+
+        <a-entity id="deleteText"
+                obj-model="obj: #deleteTextObj"
+                material="color: red;"
+                position="-1.9 -6.7 4.6"
+                scale="0.008 0.008 0.008"
+                rotation="-90 0 0">
         </a-entity>
         
         <a-entity id="bucket"
                     obj-model="obj: #bucketObj"
                     material="color: purple; shader: standard"
-                    position="2 -1.1 5"
+                    position="-0.4 -5.9 4.5"
                     rotation="0 0 0"
+                    scale="0.07 0.07 0.07"
                     static-body>
         </a-entity>
 
         <a-entity id="corkBoard"
                     obj-model="obj: #corkboardObj"
                     material="src:assets/textures/CorkBoardTexture.png;"
-                    position="-1 -7 6"
+                    position="-1 -6.5 4.9"
                     rotation="0 0 0"
+                    scale="0.1 0.1 0.1"
                     static-body>
         </a-entity>
 
         <a-entity id="table"
                     obj-model="obj: #tableObj"
                     material="src:assets/textures/TableTexture.png;"
-                    position="-1 -7 6"
-                    rotation="0 0 0"
+                    position="-0.3 -7 5.9"
+                    rotation="0 90 0"
+                    scale="0.2 0.2 0.2"
                     static-body>
         </a-entity>
 
@@ -141,18 +197,86 @@
                     position="0 0 0"
         ></a-entity>
 
-        <a-entity id="piece"
-                    geometry="primitive: box; width: 2; height: 2; depth: 2"
-                    class="clickable notgrab"
-                    material="color: green; shader: standard"
-                    position="8 1 0"
-                    grabbing=""
+        <a-plane id="glass" position="0 -4 3.93" rotation="180 0 0" width="20" height="20" color= blue static-body material="opacity: 0.5"></a-plane>
+        <a-plane id="glass2" position="0 -5.97 3.93" rotation="-90 0 0" width="20" height="20" color= blue static-body material="opacity: 0.0"></a-plane>
+
+        <!--Shapes for levels-->
+        <a-entity id="levelTwo_1"
+                    class="level2"
+                    geometry="primitive: box; width: 1.0; height: 0.08; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-1.2 -5.0 0"
+                    rotation="0 0 -6"
                     static-body>
         </a-entity>
-        <a-plane id="glass" position="0 0 -4.0" rotation="180 0 0" width="20" height="20" color= blue static-body></a-plane>
+
+        <a-entity id="levelTwo_2"
+                    class="level2"
+                    geometry="primitive: box; width: 0.5; height: 0.08; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-0.52 -5.4 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelThree_1"
+                    class="level3"
+                    geometry="primitive: box; width: 0.08; height: 0.75; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-1.35 -5.1 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelFour_1"
+                    class="level4"
+                    geometry="primitive: box; width: 0.08; height: 0.3; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-1.4 -5.27 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelFour_2"
+                    class="level4"
+                    geometry="primitive: box; width: 0.08; height: 0.3; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-0.98 -5.09 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelFour_3"
+                    class="level4"
+                    geometry="primitive: box; width: 0.08; height: 0.3; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-0.98 -5.53 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelFour_4"
+                    class="level4"
+                    geometry="primitive: box; width: 0.08; height: 0.3; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-0.61 -4.93 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
+
+        <a-entity id="levelFour_5"
+                    class="level4"
+                    geometry="primitive: box; width: 0.08; height: 0.3; depth: 0.1"
+                    material="color: pink; shader: standard"
+                    position="-0.61 -5.47 0"
+                    rotation="0 0 0"
+                    static-body>
+        </a-entity>
 
       </a-scene>
 
+
+      <!--socket stuff-->
       <script src="/socket.io/socket.io.js"></script>
       <script>
         let socket = io();
@@ -167,18 +291,19 @@
         socket.on('generate_shape', function(data) {
           console.log("shape received");
 
-          var z = Math.random() * 9 - 2.5;
+          var x = -Math.random() * 1.4;
+          var z = Math.random() * 0.4 + 4;
 
           let createdShape = document.createElement('a-entity');
             createdShape.setAttribute('id', 'shape' + counter);
 
             createdShape.setAttribute('new-geo', '');
-            createdShape.setAttribute('class', "clickable notgrab");
+            createdShape.setAttribute('class', "clickable notgrab grabbable");
             createdShape.setAttribute('geometry', 'primitive: new-geo; vertices:' + data.verts);
-            createdShape.setAttribute('position', '8.2 4 3'); 
-            createdShape.setAttribute('rotation', '0 -90 0');
+            createdShape.setAttribute('position', '-1 -4.4 4');
+            createdShape.setAttribute('scale', '0.1 0.1 0.1');
 
-            createdShape.setAttribute('animation', 'property: position; to: 8.2 -0.9 0' + (z) + '; loop:false; dur: 1200');
+            createdShape.setAttribute('animation', 'property: position; to: ' + (x) + ' -5.98 '+ (z) +'; loop:false; dur: 1200');
              
             createdShape.addEventListener('loaded', function(){
                 createdShape.setAttribute('material', 'color:' + data.material + "; side: double");
